@@ -1,5 +1,5 @@
 {% extends "base.html" %}
-
+{% import "bootstrap/wtf.html" as wtf %}
 {% block title %}index Flask {% endblock %}
 
 {% block page_content %}
@@ -8,5 +8,14 @@
     <h2>this time is {{ current_time }}</h2>
     <h3>the local date and time is <strong>{{ moment(current_time).format("MMMM Do YYYY, h:mm:ss a") }}</strong></h3>
     <h4>that was {{ moment(current_time).fromNow(refresh=True) }}</h4>
+
+    <h2>hello {% if name %}{{ name }}{% else %}Tom{% endif %}</h2>
+    {% if not known %}
+        <p>Pleased to meet you!</p>
+    {% else %}
+        <p>Happy to see you again!</p>
+    {% endif %}
 </div>
+    {{ wtf.quick_form(form) }}
+
 {% endblock %}
